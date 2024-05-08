@@ -1,10 +1,11 @@
-const express=require('express')
-const session = require ('express-session')
-const bodyParser =require('body-parser')
-const cors = require('cors')
+const express=require('express');
+const session = require ('express-session');
+const bodyParser =require('body-parser');
+const cors = require('cors');
 
-const cursosRoutes = require('./routes/cursos')
-const {appConfig} =require ('./config')
+const cursosRoutes = require('./routes/cursos');
+const userRoutes = require('./routes/userRoutes');
+const {appConfig} =require ('./config');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(session({
     saveUninitialized: false,
   }));
 
-app.use ('/v1', cursosRoutes)
+app.use ('/v1', cursosRoutes);
+app.use ('/reg', userRoutes);
 
 module.exports = app
