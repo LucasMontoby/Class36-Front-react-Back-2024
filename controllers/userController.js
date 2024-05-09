@@ -6,7 +6,8 @@ const userController = {
     register: async (req, res) =>{
         const {username, email, password} = req.body;
     try{
-            console.log('Antes de crear el uasuario', {username, email, password} );
+            console.log('cuerpo de la solicitud', req.body);
+            console.log('Antes de crear el usuario', {username, email, password} );
         
 
         if(!username || !email || !password){
@@ -16,7 +17,7 @@ const userController = {
         const user = new User({username, email, password});
         await user.save();
 
-        console.log('Luego de crear el usuario', user)
+        console.log('Luego de crear el usuario', user);
         res.status(201).json({message: 'Usuario registrado'})
         }
     
